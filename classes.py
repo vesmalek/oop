@@ -88,3 +88,35 @@ order2.summarize()
 #       with its price, and the total at the bottom
 #
 #     Create a cart, set a customer, add 3 items, then call receipt()
+
+class ShopCart:
+    items = []
+    sum = 0
+    def set_customer(self, name):
+        self.customer_name = name
+    
+    def add_item(self, product_name, price):
+        item = {'product': product_name, 'price' : price}
+        self.items.append(item)
+
+    def get_total(self):
+        for item in self.items:
+            self.sum += item['price']
+        return self.sum
+    
+    def receipt(self):
+        print(f"Customer: {self.customer_name}")
+        for item in self.items:
+            print(f"{item.get('product')} - ${item.get('price')}")
+        total = self.get_total()
+        print(f"Total: {total}")
+
+print()
+print("Question 05:")
+cart = ShopCart()
+cart.set_customer('Hashim')
+cart.add_item('shirt', 19)
+cart.add_item('shoes', 105)
+cart.add_item('bag', 50)
+
+cart.receipt()
