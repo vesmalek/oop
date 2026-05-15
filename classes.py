@@ -6,6 +6,18 @@
 class User:
     platform = "MyApp"
 
+    def set_details(self, username, email, role):
+        self.username = username
+        self.email = email
+        self.role = role
+    
+    def display(self):
+        print(f"{self.username} | {self.email} | {self.role}")
+
+    def is_admin(self):
+        return self.role == 'admin'
+
+
 user1 = User()
 user2 = User()
 print()
@@ -19,9 +31,20 @@ print(f"user1 type: {type(user1).__name__}")
 #     Create two users with different details and call display()
 #     which should print: "username | email | role"
 
+user1.set_details('gakpo', 'gakpo@lfc.com', 'Winger')
+user2.set_details('curtis', 'curtis@lfc.com', 'Midfielder')
+
+print()
+print("Question 02:")
+user1.display()
+user2.display()
+
 # Q3. Add a method called is_admin(self) to User that returns
 #     True if the role is "admin", False otherwise
 #     Test it on both users from Q2
+
+print()
+print("Question 03:")
 
 # Q4. Define a class called Order with:
 #     - A class attribute status = "pending"
