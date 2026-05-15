@@ -90,8 +90,10 @@ order2.summarize()
 #     Create a cart, set a customer, add 3 items, then call receipt()
 
 class ShopCart:
-    items = []
-    sum = 0
+    def __init__(self):
+        self.items = []
+        self.sum = 0
+
     def set_customer(self, name):
         self.customer_name = name
     
@@ -100,9 +102,7 @@ class ShopCart:
         self.items.append(item)
 
     def get_total(self):
-        for item in self.items:
-            self.sum += item['price']
-        return self.sum
+        return sum(item['price'] for item in self.items)
     
     def receipt(self):
         print(f"Customer: {self.customer_name}")
