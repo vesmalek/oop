@@ -108,8 +108,7 @@ class ShopCart:
         print(f"Customer: {self.customer_name}")
         for item in self.items:
             print(f"{item.get('product')} - ${item.get('price')}")
-        total = self.get_total()
-        print(f"Total: {total}")
+        print(f"Total: {self.get_total()}")
 
 print()
 print("Question 05:")
