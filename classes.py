@@ -3,6 +3,17 @@
 #     Create two instances and print the platform from both
 #     Then print the type of one instance
 
+class User:
+    platform = "MyApp"
+
+user1 = User()
+user2 = User()
+print()
+print("Question 01:")
+print(f"user1 platform: {user1.platform}")
+print(f"user2 platform: {user2.platform}")
+print(f"user1 type: {type(user1).__name__}")
+
 # Q2. Add a method called set_details(self, username, email, role)
 #     to the User class that sets those as instance attributes
 #     Create two users with different details and call display()
