@@ -55,6 +55,30 @@ print(f"Is user2 an admin? {user2.is_admin()}")
 #     - A method summarize(self) that prints all details including total
 #     Create two orders and call summarize() on both
 
+class Order:
+    status = "pending"
+
+    def set_details(self, product_name, quantity, price_per_unit):
+        self.product_name = product_name.strip().lower()
+        self.quantity = quantity
+        self.price_per_unit = price_per_unit
+
+    def get_total(self):
+        return self.quantity * self.price_per_unit
+    
+    def summarize(self):
+        print(f"Product name: {self.product_name}, Quantity: {self.quantity}, Price Per unit: {self.price_per_unit}. The total is {self.get_total()}")
+
+order1 = Order()
+order1.set_details('tomato', 5, 1.25)
+order2 = Order()
+order2.set_details('oranges', 2, 6.75)
+
+print()
+print("Question 04:")
+order1.summarize()
+order2.summarize()
+
 # Q5. Define a class called ShopCart with:
 #     - A method set_customer(self, name) that sets the customer name
 #     - A method add_item(self, product_name, price) that stores each
