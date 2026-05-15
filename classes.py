@@ -7,9 +7,9 @@ class User:
     platform = "MyApp"
 
     def set_details(self, username, email, role):
-        self.username = username
-        self.email = email
-        self.role = role
+        self.username = username.strip().lower()
+        self.email = email.strip().lower()
+        self.role = role.strip().lower()
     
     def display(self):
         print(f"{self.username} | {self.email} | {self.role}")
@@ -32,7 +32,7 @@ print(f"user1 type: {type(user1).__name__}")
 #     which should print: "username | email | role"
 
 user1.set_details('gakpo', 'gakpo@lfc.com', 'Winger')
-user2.set_details('curtis', 'curtis@lfc.com', 'Midfielder')
+user2.set_details('curtis', 'curtis@lfc.com', 'Admin')
 
 print()
 print("Question 02:")
@@ -45,6 +45,8 @@ user2.display()
 
 print()
 print("Question 03:")
+print(f"Is user1 an admin? {user1.is_admin()}")
+print(f"Is user2 an admin? {user2.is_admin()}")
 
 # Q4. Define a class called Order with:
 #     - A class attribute status = "pending"
