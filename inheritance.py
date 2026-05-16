@@ -8,6 +8,29 @@
 #     So creating a Dog only needs a name: Dog("Rex")
 #     Test speak() on both
 
+class Animal:
+    def __init__(self, name, sound):
+        self.name = name
+        self.sound = sound
+
+    def speak(self):
+        return f"{self.name} says {self.sound}"
+    
+class Dog(Animal):
+    def __init__(self, name):
+        super().__init__(name, "Woof")
+
+class Cat(Animal):
+    def __init__(self, name):
+        super().__init__(name, "Meow")
+
+my_dog = Dog("Rex")
+my_cat = Cat("Simba")
+print()
+print("Question 01:")
+print(f"{my_dog.speak()}")
+print(f"{my_cat.speak()}")
+
 # Q2. Using the User parent class below, create two child classes:
 #     AdminUser — role defaults to "admin", adds a method:
 #       manage_users(self) → returns "{username} is managing users."
