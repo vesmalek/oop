@@ -72,10 +72,6 @@ class User:
         self.username = username
         self.email = email
         self.role = role
-        self.is_active = True
-
-    def login(self):
-        return f"{self.username} logged in."
     
     def __str__(self):
         return f"{self.username} ({self.role})"
@@ -83,8 +79,19 @@ class User:
     def __repr__(self):
         return f"User(username='{self.username}', email='{self.email}', role='{self.role}')"
     
+user1 = User('kali', 'kali@linux.com', 'developer')
+user2 = User('superuser', 'superuser@linux.com')
+user3 = User('admin', 'admin@linux.com', 'admin')
 
+print()
+print("Question 03:")
+print(user1)
+print(user2)
+print(user3)
 
+users = [user1, user2, user3]
+
+print(users)
 
 # Q4. This question connects to Django:
 #     Define a class called BlogPost that mimics a Django model
