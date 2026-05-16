@@ -126,12 +126,45 @@ print(repr(post2))
 #       __init__: make, model, year
 #       __str__: "{year} {make} {model}"
 #       __repr__: "Vehicle(make='{make}', model='{model}', year={year})"
-#
+
+class Vehicle:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+
+    def __str__(self):
+        return f"{self.year} {self.make} {self.model}"
+    
+    def __repr__(self):
+        return f"Vehicle(make='{self.make}', model='{self.model}', year={self.year})"
+
 #     Child class: Car(Vehicle)
 #       __init__: make, model, year, num_doors=4
 #       Use super().__init__() for the Vehicle part
 #       Override __str__ to return: "{year} {make} {model} ({num_doors} doors)"
 #       Add method: honk(self) → "Beep beep!"
-#
+
+class Car(Vehicle):
+    def __init__(self, make, model, year, num_doors=4):
+        super().__init__(make, model, year)
+        self.num_doors = num_doors
+    
+    def __str__(self):
+        return super().__str__() + f"({self.num_doors} doors)"
+    
+    def honk(self):
+        print("Beep beep!")
+
 #     Create a Vehicle and a Car, print both, call repr() on both
+
+my_vehicle = Vehicle('Toyota', 'Rav4', 2006)
+my_car = Car('Subaru', 'Forester', 2010)
+
+print()
+print("Question 05:")
+print(my_vehicle)
+print(my_car)
+print(repr(my_vehicle))
+print(repr(my_car))
 #     Show that Car's __str__ overrides Vehicle's
