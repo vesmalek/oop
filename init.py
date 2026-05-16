@@ -24,8 +24,6 @@ print("Question 01:")
 user1.display()
 user2.display()
 
-print()
-
 # Q2. Define a class called Product with __init__ accepting:
 #     name, price, and category (default "General")
 #     Inside __init__ also set in_stock = True automatically (not a parameter)
@@ -47,6 +45,12 @@ class Product:
     def sell_out(self):
         self.in_stock = False
         print(f"Sorry, {self.name} is now out of stock :)")
+
+print()
+print("Question 02:")
+product1 = Product('avocadoes', 5.99, 'Grocery')
+product1.restock()
+product1.sell_out()
 
 # Q3. Define a class called Order with __init__ accepting:
 #     product_name, quantity, price_per_unit
