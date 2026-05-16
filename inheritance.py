@@ -1,4 +1,4 @@
-# Q1. Define a parent class called Animal with:
+# Q1. Define a parent class manage_users(self)called Animal with:
 #     __init__ accepting name and sound
 #     A method speak(self) that returns "{name} says {sound}"
 #
@@ -33,7 +33,7 @@ print(f"{my_cat.speak()}")
 
 # Q2. Using the User parent class below, create two child classes:
 #     AdminUser — role defaults to "admin", adds a method:
-#       manage_users(self) → returns "{username} is managing users."
+#        → returns "{username} is managing users."
 #     CustomerUser — role defaults to "customer", adds a method:
 #       place_order(self, product) → returns "{username} ordered {product}."
 #     Both should use super().__init__() correctly
@@ -48,6 +48,43 @@ print(f"{my_cat.speak()}")
 #
 #         def login(self):
 #             return f"{self.username} logged in."
+
+
+class User:
+    def __init__(self, username, email, role="viewer"):
+        self.username = username
+        self.email = email
+        self.role = role
+        self.is_active = True
+
+    def login(self):
+        return f"{self.username} logged in."
+    
+class AdminUser(User):
+    def __init__(self, username, email):
+        super().__init__(username, email, 'admin')
+
+    def manage_users(self):
+        return f"{self.username} is managing users."
+    
+class CustomerUser(User):
+    def __init__(self, username, email):
+        super().__init__(username, email, 'customer')
+
+    def place_order(self, product):
+        return f"{self.username} ordered {product}."
+    
+print()
+print("Question 02:")
+admin = AdminUser('superuser', 'su@company.com')
+print(f"{admin.login()}")
+print(f"{admin.manage_users()}")
+
+print()
+
+customer = CustomerUser('Abdi', 'abdi@code.com')
+print(f"{customer.login()}")
+print(f"{customer.place_order('tomatoes')}")
 
 # Q3. Override a method:
 #     Using your AdminUser from Q2, override login() so it returns:
