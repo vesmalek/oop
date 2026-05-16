@@ -120,13 +120,49 @@ print(f"{customer.login()}")
 #       __init__: name, price, category="General"
 #       method: display(self) — prints name, price, category
 #       method: apply_discount(self, percent) — returns discounted price
-#
+
+class Product:
+    def __init__(self, name, price, category="General"):
+        self.name = name
+        self.price = price
+        self.category = category
+
+    def display(self):
+        return f"{self.name} - ${self.price:,} - {self.category}"
+
+    def apply_discount(self, percent):
+        return self.price * (1 - (percent/100))
+    
+print()
+print("Question 05 - Testing Product class:")
+my_product = Product('Apple Pencil', 150, 'Gadget')
+print(f"{my_product.display()}")
+print(f"Discounted price: ${my_product.apply_discount(30):,}")
+
 #     Child class: DigitalProduct(Product)
 #       __init__: name, price, file_format (e.g "PDF", "MP4")
 #       category should automatically be set to "Digital" via super()
 #       Add method: download(self) → "{name} is downloading as {file_format}"
 #       Override display() to also print file_format after calling super().display()
-#
+
+class DigitalProduct(Product):
+    def __init__(self, name, price, file_format):
+        super().__init__(name, price, "Digital")
+        self.file_format = file_format
+    
+    def download(self):
+        return f"{self.name} is downloading as {self.file_format}"
+    
+    def display(self):
+        parent_result = super().display()
+        return parent_result + f" - {self.file_format}"
+
+print()
+print("Question 05 - Testing DigitalProduct (child) class:")
+dg_product = DigitalProduct('Phone Wallpaper', 5, 'HEIC')
+print(f"{dg_product.download()}")
+print(f"{dg_product.display()}")
+
 #     Child class: PhysicalProduct(Product)
 #       __init__: name, price, weight_kg
 #       category should automatically be set to "Physical" via super()
@@ -134,3 +170,21 @@ print(f"{customer.login()}")
 #       Override display() to also print weight after calling super().display()
 #
 #     Create one of each, call display(), apply_discount(), and their unique methods
+
+class PhysicalProduct(Product):
+    def __init__(self, name, price, weight_kg):
+        super().__init__(name, price, "Physical")
+        self.weight_kg = weight_kg
+
+    def ship(self):
+        return f"Shipping {self.name} — {self.weight_kg:,}kg"
+    
+    def display(self):
+        parent_result = super().display()
+        return parent_result + f" - {self.weight_kg:,}"
+    
+print()
+print("Question 05 - Testing PhysicalProduct (child) class:")
+pp_product = PhysicalProduct('Subaru Sedan', 7500, 2000)
+print(f"{pp_product.ship()}")
+print(f"{pp_product.display()}")
