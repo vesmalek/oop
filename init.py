@@ -91,6 +91,7 @@ my_order.display()
 print()
 my_order.confirm()
 my_order.display()
+
 # Q4. Define a class called BankAccount with __init__ accepting:
 #     owner and an opening balance (default 0)
 #     Add a method deposit(self, amount) that adds to balance and prints new balance
@@ -99,6 +100,35 @@ my_order.display()
 #       - prints "Insufficient funds" if not
 #     Add a method get_balance(self) that returns the current balance
 #     Test it with deposits and withdrawals including one that should fail
+
+class BankAccount:
+    def __init__(self, owner, opening_balance=0):
+        self.owner = owner
+        self.balance = opening_balance
+        print(f"Account opened successfully. Account: {self.owner} - Balance: ${self.balance:,}")
+
+    def deposit(self, amount):
+        self.balance += amount
+        print(f"You have successfully deposited ${amount:,}. Current balance is ${self.balance:,}")
+
+    def withdraw(self, amount):
+        if self.balance >= amount:
+            self.balance -= amount
+            print("Withdrawal successful!")
+        else:
+            print("Insufficient funds")
+
+    def get_balance(self):
+        return self.balance
+    
+print()
+print("Question 04:")
+my_account = BankAccount('Ally', 13500)
+my_account.deposit(2500)
+my_account.withdraw(6500)
+print(f"Account: {my_account.owner} - Balance: ${my_account.get_balance():,}")
+my_account.withdraw(15000)
+print(f"Account: {my_account.owner} - Balance: ${my_account.get_balance():,}")
 
 # Q5. Define a class called ShopCart using __init__:
 #     Accept customer_name in __init__
