@@ -66,10 +66,10 @@ class Order:
         self.quantity = quantity
         self.price_per_unit = price_per_unit
         self.total = quantity * price_per_unit
-        self.status = "pending"
+        self.status = "pending ⏳"
 
     def confirm(self):
-        self.status = "confirmed"
+        self.status = "confirmed ✅"
 
     def display(self):
         print('-' * 25)
@@ -139,3 +139,32 @@ print(f"Account: {my_account.owner} - Balance: ${my_account.get_balance():,}")
 #     Add method receipt(self) that prints customer name,
 #       each item with price, and total
 #     Create a cart, add 3 items, print the receipt
+
+class ShopCart:
+    def __init__(self):
+        self.items = []
+
+    def add_item(self, product_name, price):
+        item = {'product': product_name, 'price': price}
+        self.items.append(item)
+
+    def get_total(self):
+        return sum(item['price'] for item in self.items)
+    
+    def receipt(self):
+        print('-' * 25)
+        print("Receipt")
+        print('-' * 25)
+        for index, item in enumerate(self.items, start=1):
+            print(f"{index}. {item['product']} - ${item['price']:,}")
+        print('-' * 25)
+        print(f"TOTAL: ${self.get_total():,}")
+
+my_cart = ShopCart()
+my_cart.add_item('Pillow', 10.99)
+my_cart.add_item('Rug', 40)
+my_cart.add_item('Headphones', 1350)
+
+print()
+print("Question 05:")
+my_cart.receipt()
