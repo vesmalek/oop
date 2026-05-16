@@ -67,6 +67,25 @@ print(my_cart)
 #     __repr__: "User(username='ismail', email='ismail@mail.com', role='admin')"
 #     Then create a list of 3 users and print the list — observe which method is used
 
+class User:
+    def __init__(self, username, email, role="viewer"):
+        self.username = username
+        self.email = email
+        self.role = role
+        self.is_active = True
+
+    def login(self):
+        return f"{self.username} logged in."
+    
+    def __str__(self):
+        return f"{self.username} ({self.role})"
+    
+    def __repr__(self):
+        return f"User(username='{self.username}', email='{self.email}', role='{self.role}')"
+    
+
+
+
 # Q4. This question connects to Django:
 #     Define a class called BlogPost that mimics a Django model
 #     __init__ accepts: title, author, status (default "draft")
@@ -74,6 +93,33 @@ print(my_cart)
 #     __repr__ returns full details for debugging
 #     Add a method publish(self) that changes status to "published"
 #     Create two posts, print them, publish one, print again
+
+class BlogPost:
+    def __init__(self, title, author, status="draft"):
+        self.title = title
+        self.author = author
+        self.status = status
+
+    def __str__(self):
+        return self.title
+    
+    def __repr__(self):
+        return f"BlogPost(title='{self.title}', author='{self.author}', status='{self.status}')"
+    
+    def publish(self):
+        self.status = "published"
+
+post1 = BlogPost('How to make pancakes', 'Izzy')
+post2 = BlogPost('Python tutorial for beginners', 'Imran')
+print()
+print("Question 04:")
+print(post1)
+print(repr(post1))
+print(post2)
+print(repr(post2))
+post2.publish()
+print(post2)
+print(repr(post2))
 
 # Q5. Combine inheritance with dunder methods:
 #     Parent class: Vehicle
