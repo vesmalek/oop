@@ -60,6 +60,37 @@ product1.sell_out()
 #     Add a method display(self) that prints all details including total and status
 #     Create an order, display it, confirm it, display it again
 
+class Order:
+    def __init__(self, product_name, quantity, price_per_unit):
+        self.product_name = product_name
+        self.quantity = quantity
+        self.price_per_unit = price_per_unit
+        self.total = quantity * price_per_unit
+        self.status = "pending"
+
+    def confirm(self):
+        self.status = "confirmed"
+
+    def display(self):
+        print('-' * 25)
+        print("Order Summary:")
+        print('-' * 25)
+        print(f"Order Status: {self.status}")
+        print(f"Product: {self.product_name}")
+        print(f"Quantity: {self.quantity}")
+        print(f"Price Per Unit: {self.price_per_unit}")
+        print('-' * 12)
+        print(f"TOTAL: {self.total}")
+        print('-' * 12)
+        
+print()
+print("Question 03:")
+my_order = Order('Books', 3, 12.5)
+my_order.display()
+
+print()
+my_order.confirm()
+my_order.display()
 # Q4. Define a class called BankAccount with __init__ accepting:
 #     owner and an opening balance (default 0)
 #     Add a method deposit(self, amount) that adds to balance and prints new balance
