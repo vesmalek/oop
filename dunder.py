@@ -38,6 +38,30 @@ print(repr(my_product))
 #         def add_item(self, name, price):
 #             self.items.append({"name": name, "price": price})
 
+class ShopCart:
+    def __init__(self, customer):
+        self.customer = customer
+        self.items = []
+
+    def add_item(self, name, price):
+        self.items.append({"name": name, "price": price})
+
+    def __len__(self):
+        return self.items.count
+
+    def __str__(self):
+        return f"{self.customer}'s cart — {len(self.items)} item(s)"
+    
+print()
+print("Question 02:")
+my_cart = ShopCart('Ajmala')
+my_cart.add_item('coconut', 2)
+my_cart.add_item('apples', 5)
+my_cart.add_item('spinach', 0.5)
+my_cart.add_item('milk', 3)
+
+print(my_cart)
+
 # Q3. Add __str__ and __repr__ to the User class:
 #     __str__: "ismail (admin)" 
 #     __repr__: "User(username='ismail', email='ismail@mail.com', role='admin')"
