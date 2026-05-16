@@ -3,12 +3,50 @@
 #     Add a display() method that prints all three
 #     Create two users — one with role, one without — and call display()
 
+class User:
+    def __init__(self, username, email, role="viewer"):
+        self.username = username.strip().lower()
+        self.email = email.strip().lower()
+        self.role = role.strip().lower()
+        self.platform = "MyApp"        
+    
+    def display(self):
+        print(f"{self.username} | {self.email} | {self.role}")
+
+    def is_admin(self):
+        return self.role == 'admin'
+
+user1 = User('izzy', 'izzy@studios.com')
+user2 = User('azraq', 'azraq@studios.com', 'architect')
+
+print()
+print("Question 01:")
+user1.display()
+user2.display()
+
+print()
+
 # Q2. Define a class called Product with __init__ accepting:
 #     name, price, and category (default "General")
 #     Inside __init__ also set in_stock = True automatically (not a parameter)
 #     Add a method restock(self) that sets in_stock to True and prints a message
 #     Add a method sell_out(self) that sets in_stock to False and prints a message
 #     Test both methods on one product
+
+class Product:
+    def __init__(self, name, price, category="General"):
+        self.name = name
+        self.price = price
+        self.category = category
+        self.in_stock = True
+
+    def restock(self):
+        self.in_stock = True
+        print(f"{self.name} is now in stock!")
+
+    def sell_out(self):
+        self.in_stock = False
+        print(f"Sorry, {self.name} is now out of stock :)")
 
 # Q3. Define a class called Order with __init__ accepting:
 #     product_name, quantity, price_per_unit
