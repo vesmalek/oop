@@ -47,7 +47,7 @@ class ShopCart:
         self.items.append({"name": name, "price": price})
 
     def __len__(self):
-        return self.items.count
+        return len(self.items)
 
     def __str__(self):
         return f"{self.customer}'s cart — {len(self.items)} item(s)"
@@ -158,7 +158,7 @@ class Car(Vehicle):
         self.num_doors = num_doors
     
     def __str__(self):
-        return super().__str__() + f"({self.num_doors} doors)"
+        return super().__str__() + f" ({self.num_doors} doors)"
     
     def honk(self):
         print("Beep beep!")
