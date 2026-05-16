@@ -8,6 +8,24 @@
 #             self.price = price
 #             self.category = category
 
+class Product:
+    def __init__(self, name, price, category):
+        self.name = name
+        self.price = price
+        self.category = category
+
+    def __str__(self):
+        return f"{self.name} — ${self.price}"
+    
+    def __repr__(self):
+        return f"Product(name='{self.name}', price={self.price}, category='{self.category}')"
+
+print()
+print("Question 01:")    
+my_product = Product('onions', 8.75, 'Grocery')
+print(my_product)
+print(repr(my_product))
+
 # Q2. Add __str__ and __len__ to this ShopCart class:
 #     __str__ should return: "ismail's cart — 3 item(s)"
 #     __len__ should return the number of items in the cart
