@@ -67,6 +67,9 @@ class AdminUser(User):
     def manage_users(self):
         return f"{self.username} is managing users."
     
+    def login(self):
+        return f"{self.username} logged in with ADMIN privileges."
+    
 class CustomerUser(User):
     def __init__(self, username, email):
         super().__init__(username, email, 'customer')
@@ -74,16 +77,20 @@ class CustomerUser(User):
     def place_order(self, product):
         return f"{self.username} ordered {product}."
     
+    def login(self):
+        parent_result = super().login()
+        return parent_result + " Welcome to the shop!"
+    
 print()
 print("Question 02:")
 admin = AdminUser('superuser', 'su@company.com')
-print(f"{admin.login()}")
+print(f"{admin.login()}") # the output is more cartered towards qn 03 since i am using the same class
 print(f"{admin.manage_users()}")
 
 print()
 
 customer = CustomerUser('Abdi', 'abdi@code.com')
-print(f"{customer.login()}")
+print(f"{customer.login()}") #Output is now influenced my the modified method inside customer class
 print(f"{customer.place_order('tomatoes')}")
 
 # Q3. Override a method:
@@ -92,10 +99,21 @@ print(f"{customer.place_order('tomatoes')}")
 #     Regular User login stays unchanged
 #     Test login() on both a User and AdminUser to show the difference
 
+user = User('Masoud', 'masoud@doubletree.com')
+
+print()
+print("Question 03:")
+print(f"{user.login()}")
+print(f"{admin.login()}")
+
 # Q4. Use super() in an overridden method:
 #     Add a login() to CustomerUser that calls super().login()
 #     and appends " Welcome to the shop!" to the result
 #     Expected: "ali logged in. Welcome to the shop!"
+
+print()
+print("Question 04:")
+print(f"{customer.login()}")
 
 # Q5. Build a small product system using inheritance:
 #     Parent class: Product
