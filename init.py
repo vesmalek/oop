@@ -4,11 +4,11 @@
 #     Create two users — one with role, one without — and call display()
 
 class User:
+    platform = "MyApp"
     def __init__(self, username, email, role="viewer"):
         self.username = username.strip().lower()
         self.email = email.strip().lower()
-        self.role = role.strip().lower()
-        self.platform = "MyApp"        
+        self.role = role.strip().lower()        
     
     def display(self):
         print(f"{self.username} | {self.email} | {self.role}")
@@ -141,8 +141,9 @@ print(f"Account: {my_account.owner} - Balance: ${my_account.get_balance():,}")
 #     Create a cart, add 3 items, print the receipt
 
 class ShopCart:
-    def __init__(self):
+    def __init__(self, customer_name):
         self.items = []
+        self.customer_name = customer_name
 
     def add_item(self, product_name, price):
         item = {'product': product_name, 'price': price}
@@ -154,13 +155,14 @@ class ShopCart:
     def receipt(self):
         print('-' * 25)
         print("Receipt")
+        print(f"Customer: {self.customer_name}")
         print('-' * 25)
         for index, item in enumerate(self.items, start=1):
             print(f"{index}. {item['product']} - ${item['price']:,}")
         print('-' * 25)
         print(f"TOTAL: ${self.get_total():,}")
 
-my_cart = ShopCart()
+my_cart = ShopCart('Israa')
 my_cart.add_item('Pillow', 10.99)
 my_cart.add_item('Rug', 40)
 my_cart.add_item('Headphones', 1350)
